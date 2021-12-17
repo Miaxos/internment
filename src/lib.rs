@@ -292,6 +292,10 @@ impl<T: Eq + Hash + Send + Sync + 'static> Intern<T> {
             Intern { pointer: p }
         })
     }
+    /// Just try something
+    pub unsafe fn new_unchecked(p: *const T) -> Intern<T> {
+        Intern { pointer: &*p }
+    }
     /// Intern a value from a reference.
     ///
     /// If this value has not previously been
